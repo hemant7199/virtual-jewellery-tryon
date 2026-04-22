@@ -1,0 +1,18 @@
+{
+  "name": "dataset",
+  "version": "1.0.0",
+  "description": "This dataset contains curated jewellery items for the AR Try-On system, outfit pairing rules, and AR configuration metadata.",
+  "main": "seed.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "csv-parser": "^3.2.0",
+    "dotenv": "^17.4.2",
+    "mongoose": "^9.5.0"
+  }
+}

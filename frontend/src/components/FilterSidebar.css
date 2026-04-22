@@ -1,0 +1,134 @@
+.filter-sidebar {
+  background: var(--black-card);
+  border: 1px solid var(--black-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: sticky;
+  top: calc(var(--nav-height) + 20px);
+  max-height: calc(100vh - var(--nav-height) - 60px);
+  overflow-y: auto;
+}
+
+.fsb-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--black-border);
+  position: sticky;
+  top: 0;
+  background: var(--black-card);
+  z-index: 1;
+}
+.fsb-header h3 {
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+.fsb-header-right { display: flex; align-items: center; gap: 8px; }
+
+.fsb-active-count {
+  font-size: 11px;
+  background: rgba(201,168,76,0.15);
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.fsb-clear-btn {
+  background: none; border: none;
+  font-size: 11px; color: var(--grey);
+  cursor: pointer; font-family: var(--font-body);
+  transition: var(--transition);
+  padding: 2px 6px;
+}
+.fsb-clear-btn:hover { color: var(--gold); }
+
+.fsb-results-count {
+  padding: 10px 20px;
+  font-size: 12px;
+  color: var(--grey);
+  border-bottom: 1px solid var(--black-border);
+  background: rgba(201,168,76,0.03);
+}
+
+.fsb-group { padding: 16px 20px; }
+
+.fsb-group-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey-light);
+  margin-bottom: 12px;
+  font-family: var(--font-body);
+}
+
+/* Radio options with icon */
+.fsb-options { display: flex; flex-direction: column; gap: 2px; }
+
+.fsb-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: capitalize;
+}
+.fsb-option input[type="radio"] { display: none; }
+.fsb-option:hover { background: rgba(255,255,255,0.04); }
+.fsb-option.active { background: rgba(201,168,76,0.08); }
+
+.fsb-option-icon { font-size: 1rem; flex-shrink: 0; }
+.fsb-option-label { font-size: 13px; color: var(--ivory-dim); }
+.fsb-option.active .fsb-option-label { color: var(--gold); }
+
+/* Chip filters */
+.fsb-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.fsb-chip {
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: capitalize;
+  background: transparent;
+  border: 1px solid var(--black-border);
+  color: var(--grey-light);
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: var(--transition);
+}
+.fsb-chip:hover { border-color: rgba(201,168,76,0.4); color: var(--ivory); }
+.fsb-chip.active {
+  background: rgba(201,168,76,0.12);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* Price list */
+.fsb-price-list, .fsb-rating-options { display: flex; flex-direction: column; gap: 2px; }
+
+.fsb-price-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 12px;
+  color: var(--ivory-dim);
+}
+.fsb-price-option input { display: none; }
+.fsb-price-option:hover { background: rgba(255,255,255,0.04); color: var(--ivory); }
+.fsb-price-option.active { background: rgba(201,168,76,0.08); color: var(--gold); }
+
+.fsb-divider {
+  height: 1px;
+  background: var(--black-border);
+  margin: 0 20px;
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLIMMR — 3D Model Viewer Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a0a; color: #f5f0e8; font-family: 'Outfit', system-ui, sans-serif; }
+    header { padding: 20px 40px; border-bottom: 1px solid #1f1f1f; display: flex; align-items: center; gap: 12px; }
+    header h1 { font-size: 1.4rem; letter-spacing: 0.15em; }
+    header span { color: #c9a84c; font-size: 1.2rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; padding: 32px 40px; }
+    .card { background: #161616; border: 1px solid #1f1f1f; border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+    .card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); }
+    .viewer { width: 100%; height: 240px; position: relative; background: #111; }
+    canvas { display: block; }
+    .card-info { padding: 16px; }
+    .card-name { font-size: 0.95rem; margin-bottom: 6px; }
+    .card-meta { display: flex; gap: 8px; font-size: 11px; }
+    .tag { padding: 3px 10px; border-radius: 999px; background: rgba(201,168,76,0.1); color: #c9a84c; border: 1px solid rgba(201,168,76,0.2); }
+    .card-price { font-family: Georgia, serif; font-size: 1.1rem; color: #c9a84c; margin-top: 8px; }
+    h2 { text-align: center; padding: 32px; color: #888; font-size: 1rem; font-weight: 400; }
+  </style>
+</head>
+<body>
+  <header>
+    <span>✦</span>
+    <h1>GLIMMR</h1>
+    <span style="color:#888; font-size:0.9rem; margin-left:8px;">3D Model Library — 28 Jewellery Pieces</span>
+  </header>
+
+  <div class="grid" id="grid"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    const MODELS = [
+      { name:'Royal Kundan Jhumka', category:'earring', material:'gold', price:'₹18,500', url:'/models/earrings/kundan_jhumka.glb' },
+      { name:'Diamond Solitaire Studs', category:'earring', material:'diamond', price:'₹45,000', url:'/models/earrings/diamond_stud.glb' },
+      { name:'Silver Oxidized Hoop', category:'earring', material:'silver', price:'₹1,299', url:'/models/earrings/silver_hoop.glb' },
+      { name:'Rose Gold Floral Drops', category:'earring', material:'rose-gold', price:'₹8,900', url:'/models/earrings/rose_gold_drop.glb' },
+      { name:'Pearl Chandbali', category:'earring', material:'pearl', price:'₹12,000', url:'/models/earrings/pearl_chandbali.glb' },
+      { name:'Emerald Polki Earrings', category:'earring', material:'gold', price:'₹35,000', url:'/models/earrings/emerald_polki.glb' },
+      { name:'Oxidized Silver Jhumka', category:'earring', material:'silver', price:'₹2,200', url:'/models/earrings/oxidized_jhumka.glb' },
+      { name:'Classic Diamond Pendant', category:'necklace', material:'diamond', price:'₹55,000', url:'/models/necklaces/diamond_pendant.glb' },
+      { name:'Temple Long Necklace', category:'necklace', material:'gold', price:'₹65,000', url:'/models/necklaces/temple_necklace.glb' },
+      { name:'Layered Boho Necklace', category:'necklace', material:'silver', price:'₹2,499', url:'/models/necklaces/boho_layered.glb' },
+      { name:'Kundan Meenakari Choker', category:'necklace', material:'gold', price:'₹28,000', url:'/models/necklaces/kundan_choker.glb' },
+      { name:'Rose Gold Heart Necklace', category:'necklace', material:'rose-gold', price:'₹9,500', url:'/models/necklaces/rose_heart.glb' },
+      { name:'Jadau Bridal Set', category:'necklace', material:'gold', price:'₹1,85,000', url:'/models/necklaces/jadau_set.glb' },
+      { name:'Minimalist Gold Bar', category:'necklace', material:'gold', price:'₹4,500', url:'/models/necklaces/gold_bar.glb' },
+      { name:'Solitaire Engagement Ring', category:'ring', material:'diamond', price:'₹1,20,000', url:'/models/rings/solitaire_engagement.glb' },
+      { name:'Gold Maharani Ring', category:'ring', material:'gold', price:'₹22,000', url:'/models/rings/maharani_ring.glb' },
+      { name:'Stackable Bands Set', category:'ring', material:'rose-gold', price:'₹15,000', url:'/models/rings/stackable_bands.glb' },
+      { name:'Sapphire Halo Ring', category:'ring', material:'white-gold', price:'₹75,000', url:'/models/rings/sapphire_halo.glb' },
+      { name:'Silver Toe Ring Set', category:'ring', material:'silver', price:'₹699', url:'/models/rings/silver_toe.glb' },
+      { name:'Diamond Tennis Bracelet', category:'bracelet', material:'diamond', price:'₹95,000', url:'/models/bracelets/diamond_tennis.glb' },
+      { name:'Gold Kada Bracelet', category:'bracelet', material:'gold', price:'₹42,000', url:'/models/bracelets/gold_kada.glb' },
+      { name:'Silver Charm Bracelet', category:'bracelet', material:'silver', price:'₹3,500', url:'/models/bracelets/silver_charm.glb' },
+      { name:'Lac Bangles Set', category:'bangle', material:'gold', price:'₹5,500', url:'/models/bangles/lac_bangles.glb' },
+      { name:'Glass Bangle Set', category:'bangle', material:'gold', price:'₹899', url:'/models/bangles/glass_bangles.glb' },
+      { name:'Diamond Nose Pin', category:'nose-ring', material:'diamond', price:'₹8,500', url:'/models/nosering/diamond_pin.glb' },
+      { name:'Gold Nath Nose Ring', category:'nose-ring', material:'gold', price:'₹15,000', url:'/models/nosering/gold_nath.glb' },
+      { name:'Om Gold Pendant', category:'pendant', material:'gold', price:'₹6,500', url:'/models/pendants/om_pendant.glb' },
+      { name:'Butterfly Silver Pendant', category:'pendant', material:'silver', price:'₹1,899', url:'/models/pendants/butterfly_pendant.glb' },
+    ];
+
+    const MAT = {
+      gold:{color:0xC9A84C,m:0.9,r:0.1}, silver:{color:0xB0B8C1,m:0.95,r:0.05},
+      diamond:{color:0xA8D8F0,m:0,r:0,t:true}, 'rose-gold':{color:0xD4856A,m:0.85,r:0.15},
+      'white-gold':{color:0xD0D8E0,m:0.92,r:0.08}, platinum:{color:0xC0C8D0,m:0.98,r:0.02},
+      pearl:{color:0xF0ECE4,m:0.1,r:0.4}
+    };
+
+    const grid = document.getElementById('grid');
+
+    MODELS.forEach((item, idx) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="viewer" id="v${idx}"></div>
+        <div class="card-info">
+          <div class="card-name">${item.name}</div>
+          <div class="card-meta">
+            <span class="tag">${item.category}</span>
+            <span class="tag">${item.material}</span>
+          </div>
+          <div class="card-price">${item.price}</div>
+        </div>`;
+      grid.appendChild(card);
+
+      // Stagger initialization
+      setTimeout(() => initViewer(idx, item), idx * 60);
+    });
+
+    function initViewer(idx, item) {
+      const container = document.getElementById(`v${idx}`);
+      if (!container || !window.THREE) return;
+      const THREE = window.THREE;
+      const W = container.clientWidth, H = 240;
+
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x111111);
+      const camera = new THREE.PerspectiveCamera(45, W/H, 0.1, 100);
+      camera.position.set(0, 0, 2.5);
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(W, H);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.appendChild(renderer.domElement);
+
+      scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+      const pt = new THREE.PointLight(0xffd580, 2.5, 12);
+      pt.position.set(2,3,2); scene.add(pt);
+      const pt2 = new THREE.PointLight(0x88aaff, 1, 10);
+      pt2.position.set(-2,-1,1); scene.add(pt2);
+      scene.add(new THREE.DirectionalLight(0xffffff, 0.8).position.set(0,5,5));
+
+      const cfg = MAT[item.material] || MAT.gold;
+      const mat = new THREE.MeshStandardMaterial({
+        color:cfg.color, metalness:cfg.m, roughness:cfg.r,
+        transparent:cfg.t||false, opacity:cfg.t?0.82:1
+      });
+
+      let mesh;
+      const cat = item.category;
+      if (cat==='ring'||cat==='bangle'||cat==='bracelet') {
+        const R=cat==='bangle'?0.72:cat==='bracelet'?0.65:0.44, r=cat==='ring'?0.1:0.08;
+        mesh=new THREE.Mesh(new THREE.TorusGeometry(R,r,32,64),mat);
+      } else if (cat==='earring') {
+        const g=new THREE.Group();
+        g.add(new THREE.Mesh(new THREE.TorusGeometry(0.28,0.04,16,48),mat));
+        const gm=new THREE.MeshStandardMaterial({color:0xA8D8F0,metalness:0,roughness:0,transparent:true,opacity:0.85});
+        const gem=new THREE.Mesh(new THREE.SphereGeometry(0.12,16,16),gm);
+        gem.position.set(0,-0.42,0); g.add(gem); mesh=g;
+      } else if (cat==='necklace') {
+        mesh=new THREE.Mesh(new THREE.TorusKnotGeometry(0.32,0.07,80,16,2,3),mat);
+      } else if (cat==='nose-ring') {
+        mesh=new THREE.Mesh(new THREE.TorusGeometry(0.22,0.03,16,48),mat);
+      } else {
+        // pendant / default
+        const pts=[];
+        pts.push(new THREE.Vector2(0,0.42));
+        for(let i=1;i<8;i++){const t=i/8;pts.push(new THREE.Vector2(Math.sin(t*Math.PI)*0.26,0.42-t*0.84));}
+        pts.push(new THREE.Vector2(0,-0.42));
+        mesh=new THREE.Mesh(new THREE.LatheGeometry(pts,24),mat);
+      }
+      scene.add(mesh);
+
+      let drag=false,px=0,py=0;
+      container.addEventListener('mousedown',e=>{drag=true;px=e.clientX;py=e.clientY;});
+      container.addEventListener('mousemove',e=>{if(!drag)return;mesh.rotation.y+=(e.clientX-px)*0.012;mesh.rotation.x+=(e.clientY-py)*0.012;px=e.clientX;py=e.clientY;});
+      container.addEventListener('mouseup',()=>drag=false);
+      container.addEventListener('mouseleave',()=>drag=false);
+
+      let frame;
+      function animate(){
+        frame=requestAnimationFrame(animate);
+        if(!drag) mesh.rotation.y+=0.008;
+        pt.position.x=Math.sin(Date.now()*0.001)*2.5;
+        pt.position.z=Math.cos(Date.now()*0.001)*2.5;
+        renderer.render(scene,camera);
+      }
+      animate();
+    }
+  </script>
+</body>
+</html>

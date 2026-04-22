@@ -1,0 +1,34 @@
+{
+  "name": "jewellery-tryon-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Jewellery 3D TryOn",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "test": "jest --testPathPattern=tests/ --forceExit --detectOpenHandles",
+    "test:watch": "jest --watch"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testTimeout": 15000
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cohere-ai": "^7.9.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.1.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "natural": "^6.10.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}

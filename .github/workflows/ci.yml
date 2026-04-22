@@ -1,0 +1,121 @@
+name: GLIMMR CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # ── Backend Tests ─────────────────────────────────────────────────
+  backend-test:
+    name: Backend Tests (Node.js)
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo:7
+        ports:
+          - 27017:27017
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install backend dependencies
+        working-directory: ./backend
+        run: npm install
+
+      - name: Run backend tests
+        working-directory: ./backend
+        env:
+          NODE_ENV: test
+          MONGO_URI: mongodb://localhost:27017/glimmr_test
+          JWT_SECRET: test_secret_key_for_ci
+          PORT: 5000
+        run: npm test
+
+  # ── Frontend Build ────────────────────────────────────────────────
+  frontend-build:
+    name: Frontend Build (React)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm install
+
+      - name: Build frontend
+        working-directory: ./frontend
+        env:
+          CI: false
+          REACT_APP_API_URL: http://localhost:5000/api
+        run: npm run build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-build
+          path: frontend/build/
+          retention-days: 7
+
+  # ── Python ML Tests ───────────────────────────────────────────────
+  ml-test:
+    name: Python ML Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: dataset/requirements.txt
+
+      - name: Install Python dependencies
+        working-directory: ./dataset
+        run: pip install -r requirements.txt
+
+      - name: Run ML recommendation tests
+        working-directory: ./dataset
+        run: python ml_recommend.py
+
+  # ── Deploy to Vercel (frontend) ───────────────────────────────────
+  deploy-frontend:
+    name: Deploy Frontend to Vercel
+    needs: [ frontend-build ]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./frontend
+          vercel-args: '--prod'

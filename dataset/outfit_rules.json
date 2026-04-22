@@ -1,0 +1,114 @@
+{
+  "outfit_rules": {
+    "bridal": {
+      "outfits": ["bridal-lehenga", "bridal-saree", "wedding-gown", "heavy-dupatta-set", "anarkali-bridal"],
+      "fabrics": ["silk", "velvet", "brocade", "zari", "net-embroidery"],
+      "necklines": ["boat-neck", "sweetheart", "off-shoulder", "high-neck-blouse"],
+      "description": "Heavy traditional jewellery matches elaborate bridal outfits with rich fabrics"
+    },
+    "traditional": {
+      "outfits": ["saree", "lehenga", "salwar-kameez", "anarkali", "sharara", "gharara"],
+      "fabrics": ["cotton-silk", "chanderi", "banarasi", "kanjivaram", "georgette"],
+      "necklines": ["round-neck", "square-neck", "deep-v-blouse", "halter-blouse"],
+      "description": "Traditional jewellery enhances Indian ethnic wear with heritage silhouettes"
+    },
+    "contemporary": {
+      "outfits": ["western-dress", "kurti-palazzo", "indo-western", "co-ord-set", "blazer-set", "maxi-dress"],
+      "fabrics": ["crepe", "chiffon", "georgette", "linen", "cotton"],
+      "necklines": ["v-neck", "boat-neck", "collared", "square-neck", "scoop-neck"],
+      "description": "Contemporary jewellery bridges traditional craftsmanship with modern silhouettes"
+    },
+    "casual": {
+      "outfits": ["jeans-top", "casual-dress", "co-ord-set", "tank-top-skirt", "dungarees", "shirt-dress"],
+      "fabrics": ["denim", "cotton", "jersey", "linen", "poplin"],
+      "necklines": ["round-neck", "v-neck", "off-shoulder", "scoop-neck"],
+      "description": "Casual jewellery adds personality to everyday outfits without overwhelming"
+    },
+    "minimalist": {
+      "outfits": ["formal-wear", "business-casual", "monochrome-outfit", "tailored-suit", "shift-dress"],
+      "fabrics": ["wool", "ponte", "silk-blend", "cotton-blend", "stretch-fabric"],
+      "necklines": ["collared", "turtleneck", "boat-neck", "high-neck"],
+      "description": "Minimalist jewellery lets clean lines and quality fabrics speak for themselves"
+    },
+    "fusion": {
+      "outfits": ["indo-western", "ethnic-top-jeans", "fusion-wear", "dhoti-pants-crop", "saree-gown"],
+      "fabrics": ["denim-khadi", "cotton-silk-blend", "printed-georgette", "embroidered-denim"],
+      "necklines": ["off-shoulder", "cold-shoulder", "asymmetric", "wrap-style"],
+      "description": "Fusion jewellery celebrates the meeting of cultures and style traditions"
+    }
+  },
+  "color_harmony": {
+    "gold": {
+      "complementary": ["red", "maroon", "deep-green", "royal-blue", "mustard", "burnt-orange"],
+      "neutral_pairings": ["off-white", "cream", "ivory", "champagne"],
+      "avoid": ["neon-colors", "pastel-mint", "pastel-yellow"],
+      "tip": "Gold jewellery creates warmth — pair with rich, saturated colors for drama"
+    },
+    "silver": {
+      "complementary": ["cobalt-blue", "black", "charcoal", "white", "purple", "teal"],
+      "neutral_pairings": ["grey", "silver-grey", "cool-white", "light-blue"],
+      "avoid": ["warm-browns", "orange", "rust"],
+      "tip": "Silver jewellery suits cool tones — midnight blue or crisp white are perfect"
+    },
+    "diamond": {
+      "complementary": ["black", "navy", "deep-burgundy", "royal-blue", "emerald-green"],
+      "neutral_pairings": ["white", "ivory", "champagne", "light-grey"],
+      "avoid": [],
+      "tip": "Diamonds work with virtually any color — let the cut and clarity shine"
+    },
+    "rose-gold": {
+      "complementary": ["blush-pink", "dusty-rose", "peach", "nude", "lavender", "mauve"],
+      "neutral_pairings": ["cream", "champagne", "soft-white", "warm-beige"],
+      "avoid": ["neon-yellow", "lime-green", "electric-blue"],
+      "tip": "Rose gold has a romantic warmth — soft, muted palettes are its natural home"
+    },
+    "platinum": {
+      "complementary": ["midnight-blue", "black", "charcoal", "white", "ice-blue"],
+      "neutral_pairings": ["cool-grey", "silver-grey", "oyster-white"],
+      "avoid": ["warm-earthy-tones", "orange", "warm-yellow"],
+      "tip": "Platinum's cool sheen is at its best against rich darks or crisp neutrals"
+    },
+    "pearl": {
+      "complementary": ["pastel-blue", "soft-pink", "mint", "lavender", "powder-yellow"],
+      "neutral_pairings": ["white", "cream", "blush", "ivory"],
+      "avoid": ["harsh-neons", "very-dark-colors"],
+      "tip": "Pearls carry soft elegance — pastels and whites let their luster glow"
+    }
+  },
+  "occasion_guide": {
+    "wedding": {
+      "recommended_styles": ["bridal", "traditional"],
+      "recommended_materials": ["gold", "diamond", "kundan", "polki"],
+      "tip": "Coordinate all pieces in the same metal family for a cohesive bridal look"
+    },
+    "office": {
+      "recommended_styles": ["minimalist", "contemporary"],
+      "recommended_materials": ["silver", "diamond", "gold-subtle"],
+      "tip": "Less is more at the office — one statement piece with simple studs works best"
+    },
+    "party": {
+      "recommended_styles": ["contemporary", "fusion"],
+      "recommended_materials": ["gold", "rose-gold", "diamond"],
+      "tip": "Parties are for bold choices — statement earrings or a layered necklace steals the show"
+    },
+    "daily": {
+      "recommended_styles": ["minimalist", "casual"],
+      "recommended_materials": ["silver", "rose-gold", "gold-light"],
+      "tip": "Daily wear should be comfortable and durable — avoid pieces with sharp edges"
+    },
+    "festival": {
+      "recommended_styles": ["traditional", "fusion"],
+      "recommended_materials": ["gold", "silver-oxidized", "kundan"],
+      "tip": "Festivals celebrate culture — embrace bold traditional pieces with vibrant colors"
+    }
+  },
+  "styling_rules": [
+    "Match metals within a single outfit — mixing gold and silver requires intention",
+    "Balance heavy statement pieces with simpler companions",
+    "Necklace length should complement your neckline — V-neck → pendant, high-neck → long chain",
+    "Updos showcase chandelier earrings; studs work with every hairstyle",
+    "Bridal sets look best when all metals and stones are coordinated",
+    "Minimalist stacking: odd numbers (3 or 5 rings) look more natural than even",
+    "Skin tone matters: warm skin glows with gold and rose gold; cool skin shines with silver and platinum"
+  ]
+}

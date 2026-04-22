@@ -1,0 +1,73 @@
+.three-viewer {
+  position: relative;
+  background: var(--black-soft);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--black-border);
+}
+
+.three-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--black-soft);
+  z-index: 2;
+  font-size: 12px;
+  color: var(--grey);
+}
+
+.three-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--black-card), var(--black-soft));
+  z-index: 2;
+}
+
+.fallback-icon {
+  font-size: 4rem;
+  filter: drop-shadow(0 0 30px rgba(201,168,76,0.4));
+  animation: floatGem 4s ease-in-out infinite;
+}
+@keyframes floatGem {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(5deg); }
+}
+
+.fallback-label {
+  font-size: 13px;
+  color: var(--grey-light);
+  text-align: center;
+  padding: 0 16px;
+}
+
+.three-mount {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.three-mount.visible {
+  opacity: 1;
+}
+
+.three-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--grey);
+  background: rgba(0,0,0,0.5);
+  padding: 4px 8px;
+  border-radius: var(--radius-full);
+  pointer-events: none;
+}

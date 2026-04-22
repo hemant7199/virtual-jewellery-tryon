@@ -1,0 +1,29 @@
+id,name,category,subcategory,material,price,currency,style,colorTone,occasion,gemstones,tags,rating,reviewCount,arScale,arOffsetX,arOffsetY,arAnchor
+j001,Royal Kundan Jhumka,earring,jhumka,gold,18500,INR,bridal,warm,"wedding,festival,engagement","kundan,ruby,emerald","traditional,jhumka,bridal,festive",4.8,245,0.8,0,-0.02,left_ear
+j002,Diamond Solitaire Studs,earring,stud,diamond,45000,INR,minimalist,cool,"daily,office,party,wedding",diamond,"diamond,stud,minimalist,gifting",4.9,189,0.4,0,-0.01,left_ear
+j003,Silver Oxidized Hoop,earring,hoop,silver,1299,INR,contemporary,cool,"daily,casual,college",,"silver,hoop,oxidized,casual",4.3,562,0.9,0,0,left_ear
+j004,Rose Gold Floral Drops,earring,drop,rose-gold,8900,INR,contemporary,warm,"party,date,casual",tourmaline,"rose-gold,floral,drop,romantic",4.6,98,0.7,0,-0.015,left_ear
+j005,Pearl Chandbali Earrings,earring,chandbali,gold,12000,INR,traditional,warm,"wedding,festival,puja",pearl,"pearl,chandbali,traditional,gold",4.7,134,0.85,0,-0.02,left_ear
+j006,Emerald Polki Earrings,earring,polki,gold,35000,INR,bridal,warm,"wedding,sangeet,engagement","diamond,emerald","polki,emerald,bridal,luxury",4.9,67,0.9,0,-0.025,left_ear
+j007,Classic Diamond Pendant,necklace,pendant,diamond,55000,INR,minimalist,cool,"party,date,office,wedding",diamond,"diamond,pendant,solitaire,gifting",4.9,312,0.6,0,0.05,neck_center
+j008,Temple Jewellery Long Necklace,necklace,long-necklace,gold,65000,INR,traditional,warm,"wedding,temple,festival","ruby,emerald","temple,gold,traditional,south-indian",4.8,89,1.0,0,0.08,neck_center
+j009,Layered Boho Necklace,necklace,layered,silver,2499,INR,contemporary,cool,"casual,college,vacation",,"silver,layered,boho,casual,trendy",4.4,445,0.9,0,0.06,neck_center
+j010,Kundan Meenakari Choker,necklace,choker,gold,28000,INR,bridal,warm,"wedding,engagement,sangeet","kundan,ruby,emerald","kundan,choker,meenakari,bridal",4.7,156,0.95,0,0.03,neck_center
+j011,Rose Gold Heart Necklace,necklace,pendant,rose-gold,9500,INR,contemporary,warm,"valentine,anniversary,gifting,daily",ruby,"heart,rose-gold,gifting,romantic",4.6,278,0.5,0,0.04,neck_center
+j012,Solitaire Engagement Ring,ring,solitaire,diamond,120000,INR,minimalist,cool,"engagement,wedding,anniversary",diamond,"diamond,solitaire,engagement,luxury",5.0,87,0.5,0,0,ring_finger_right
+j013,Gold Maharani Ring,ring,cocktail,gold,22000,INR,traditional,warm,"wedding,festival,party","ruby,emerald","gold,cocktail,traditional,statement",4.7,143,0.55,0,0,ring_finger_right
+j014,Stackable Bands Set,ring,band,rose-gold,15000,INR,contemporary,warm,"daily,casual,party",diamond,"stackable,rose-gold,bands,trendy",4.8,267,0.48,0,0,ring_finger_right
+j015,Sapphire Halo Ring,ring,halo,white-gold,75000,INR,contemporary,cool,"engagement,anniversary,gifting","sapphire,diamond","sapphire,halo,white-gold,royal",4.9,52,0.52,0,0,ring_finger_right
+j016,Silver Toe Ring Set,ring,toe-ring,silver,699,INR,traditional,cool,"wedding,daily,traditional",,"silver,toe-ring,traditional,wedding",4.5,789,0.3,0,0,toe_finger
+j017,Diamond Tennis Bracelet,bracelet,tennis,diamond,95000,INR,minimalist,cool,"wedding,party,anniversary",diamond,"diamond,tennis,luxury,gifting",4.9,45,0.7,0,0,left_wrist
+j018,Gold Kada Bracelet,bracelet,kada,gold,42000,INR,traditional,warm,"wedding,festival,puja,daily",,"kada,gold,traditional,heirloom",4.7,198,0.8,0,0,left_wrist
+j019,Silver Charm Bracelet,bracelet,charm,silver,3500,INR,contemporary,cool,"casual,gifting,birthday",,"charm,silver,gifting,casual",4.5,367,0.65,0,0,left_wrist
+j020,Lac Bangles Set,bangle,lac,gold,5500,INR,bridal,warm,"wedding,sangeet,festival",,"lac,bangles,bridal,traditional",4.6,234,0.85,0,0,left_wrist
+j021,Glass Bangle Set Red Green,bangle,glass,gold,899,INR,traditional,warm,"wedding,festival,teej",,"glass,bangles,colorful,festival,budget",4.4,1245,0.9,0,0,left_wrist
+j022,Diamond Nose Pin,nose-ring,pin,diamond,8500,INR,minimalist,cool,"daily,office,casual",diamond,"nose-pin,minimalist,everyday",4.8,489,0.2,-0.015,-0.005,left_nostril
+j023,Gold Nath Nose Ring,nose-ring,nath,gold,15000,INR,bridal,warm,wedding,"pearl,kundan","nath,bridal,marathi,wedding",4.7,78,0.9,-0.02,0,left_nostril
+j024,Om Gold Pendant,pendant,religious,gold,6500,INR,fusion,warm,"daily,religious,gifting",diamond,"om,gold,religious,spiritual",4.8,567,0.5,0,0.05,neck_center
+j025,Butterfly Silver Pendant,pendant,fashion,silver,1899,INR,contemporary,cool,"casual,college,gifting",sapphire,"butterfly,silver,cute,casual,gifting",4.5,342,0.45,0,0.04,neck_center
+j026,Jadau Bridal Necklace Set,necklace,set,gold,185000,INR,bridal,warm,"wedding,engagement","kundan,ruby,emerald,pearl","jadau,bridal,set,luxury,royal",4.9,34,1.0,0,0.07,neck_center
+j027,Minimalist Gold Bar Necklace,necklace,bar,gold,4500,INR,minimalist,warm,"daily,office,casual",,"bar,gold,minimalist,everyday",4.6,198,0.4,0,0.03,neck_center
+j028,Oxidized Silver Jhumka,earring,jhumka,silver,2200,INR,fusion,cool,"casual,festival,college",,"oxidized,jhumka,fusion,boho",4.5,312,0.75,0,-0.02,left_ear
