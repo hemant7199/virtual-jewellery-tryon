@@ -1,5 +1,9 @@
 # GLIMMR — Complete Setup Guide
-### AR-Based Live 3D Jewellery Try-On | TIET Capstone Project
+### AR-Based Live 3D Jewellery Try-On
+
+---
+
+GLIMMR is a full-stack AR jewellery try-on platform. This guide helps you set up and run the project locally or in production.
 
 ---
 
@@ -19,8 +23,8 @@
 
 ### Step 1 — Clone the repository
 ```bash
-git clone https://github.com/your-username/jewellery-3d-tryon.git
-cd jewellery-3d-tryon
+git clone https://github.com/hemant7199/virtual-jewellery-tryon.git
+cd virtual-jewellery-tryon
 ```
 
 ### Step 2 — Install all dependencies
@@ -78,6 +82,12 @@ node seed.js
 ```bash
 # From project root — starts both backend (5000) and frontend (3000)
 npm run dev
+```
+
+Expected:
+```
+Frontend → http://localhost:3000
+Backend  → http://localhost:5000
 ```
 
 Open **http://localhost:3000** in your browser.
@@ -194,8 +204,8 @@ DEL  /jewellery/:id      (admin)
 
 ### Recommendations
 ```
-POST /recommend/jewellery   Body: { jewelleryId, limit }
-POST /recommend/outfit      Body: { jewelleryId }
+POST /recommend/jewellery    Body: { jewelleryId, limit }
+POST /recommend/outfit       Body: { jewelleryId }
 POST /recommend/image-search Body: { tags, style, material, category }
 ```
 
@@ -207,10 +217,10 @@ GET  /chatbot/suggestions
 
 ### Try-On Sessions
 ```
-POST /tryon/session/start              Body: { userId?, deviceInfo? }
-POST /tryon/session/:sessionId/item    Body: { jewelleryId, duration }
+POST /tryon/session/start               Body: { userId?, deviceInfo? }
+POST /tryon/session/:sessionId/item     Body: { jewelleryId, duration }
 POST /tryon/session/:sessionId/feedback Body: { rating, comment, fps }
-GET  /tryon/stats                      (admin)
+GET  /tryon/stats                       (admin)
 ```
 
 ### Users
@@ -240,7 +250,7 @@ Use `GLIMMR10` in the cart for 10% discount.
 
 ## Project Structure
 ```
-jewellery-3d-tryon/
+virtual-jewellery-tryon/
 ├── frontend/src/
 │   ├── components/
 │   │   ├── Navbar          — Navigation with cart/favorites badges
@@ -293,7 +303,7 @@ jewellery-3d-tryon/
 - Try Chrome or Edge for best WebXR support
 
 **MongoDB connection failed?**
-- Ensure MongoDB is running: `mongod --dbpath /data/db`
+- Ensure MongoDB is running: `mongod` (Windows) or `mongod --dbpath /data/db` (macOS/Linux)
 - Check `MONGO_URI` in `backend/.env`
 - The app works with mock data even without MongoDB
 
@@ -311,15 +321,16 @@ jewellery-3d-tryon/
 
 ## Deployment
 
-### Frontend → Vercel
+### Frontend → Netlify
 ```bash
 cd frontend
 npm run build
-npx vercel --prod
+# Drag & drop the build/ folder at netlify.com/drop
+# Or connect GitHub repo for auto-deploy
 ```
 
-### Backend → Railway
-1. Create new project on railway.app
+### Backend → Render
+1. Create new Web Service on render.com
 2. Connect GitHub repo
 3. Set root directory to `/backend`
 4. Add environment variables from `.env.example`
@@ -332,4 +343,4 @@ npx vercel --prod
 
 ---
 
-*TIET Capstone Project | CPG No. 168 | December 2025*
+*© 2025 GLIMMR*
